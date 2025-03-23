@@ -214,6 +214,49 @@ try {
 
 ---
 
+
+---
+### 9. Random Number Generator
+Generates a random number within a given range, and the length of the number is defined by the length parameter.
+Parameters:
+min: The minimum value of the generated number.
+max: The maximum value of the generated number.
+length: The length of the generated number (total digits).
+```javascript
+const random6DigitNumber = generateRandomNumber(100000, 999999, 6);
+console.log(random6DigitNumber);  
+// Output: A 6-digit number, e.g., "539812"
+```
+
+---
+
+
+---
+### 10. Ranom OTP Generator
+A string representing the OTP.
+```javascript
+const otp = generateOTP(6); // Generates a 6-digit OTP
+console.log(`Generated OTP: ${otp}`);
+// Output - Generated OTP: 9770112074
+```
+
+---
+
+---
+### 11. Random API Key Generator
+Generates a secure random API key with the specified number of bytes. The API key is returned as a hexadecimal string.
+
+Parameters:
+length (optional): The length of the API key in bytes (default: 32 bytes).
+```javascript
+const apiKey = generateApiKey(); // Generates a 64-character API key (32 bytes in hex)
+console.log(`Generated API Key: ${apiKey}`);
+// output: Generated API Key: 84e19acaa6f069e4fe9540a85fcdc146ecf8ed86b72eacfb67c75aeab4c68da7
+```
+
+---
+
+
 ## Community and Ecosystem
 
 By using **Random Password Toolkit**, you are joining a growing community of developers who are passionate about secure passwords and encryption. We encourage you to share your experiences, ideas, and feedback on GitHub Discussions or any community platform of your choice.

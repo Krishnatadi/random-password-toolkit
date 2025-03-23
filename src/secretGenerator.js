@@ -77,8 +77,11 @@ const generateMultiple = (amount, options = {}) => {
   return Array.from({ length: amount }, () => generate(options));
 };
 
-
-
+/**
+ * Generate a pronounceable password.
+ * @param {number} length - Length of the password.
+ * @returns {string} - The generated pronounceable password.
+ */
 function generatePronounceablePassword(length = 10) {
   const vowels = 'aeiouAEIOU';
   const consonants = 'bcdfghjklmnpqrstvwxyzBCDFGHJKLMNPQRSTVWXYZ';
@@ -110,8 +113,12 @@ function generatePronounceablePassword(length = 10) {
   return password;
 }
 
-
-
+/**
+ * Generate a password with a custom character pool.
+ * @param {number} length - Length of the password.
+ * @param {string} customPool - Custom set of characters to draw from.
+ * @returns {string} - The generated password.
+ */
 function generateWithCustomPool(length = 10, customPool = '') {
   if (!customPool) {
     throw new Error('Custom character pool must not be empty.');
@@ -125,5 +132,52 @@ function generateWithCustomPool(length = 10, customPool = '') {
   return password;
 }
 
+/**
+ * Generate a random number within a given range.
+ * @param {number} min - The minimum value for the random number.
+ * @param {number} max - The maximum value for the random number.
+ * @param {number} length - Length of the number (total digits).
+ * @returns {string} - The generated random number as a string.
+ */
+function generateRandomNumber(min = 0, max = 1000, length = 4) {
+  if (min >= max) {
+    throw new Error('Max value must be greater than min value.');
+  }
+  
+  // Generate random number within range
+  let randomNumber = crypto.randomInt(min, max + 1).toString();
 
-module.exports = { generate, generateMultiple, generatePronounceablePassword, generateWithCustomPool };
+  // Ensure the length of the generated number is as expected
+  while (randomNumber.length < length) {
+    randomNumber = '0' + randomNumber;  // Pad with leading zeros
+  }
+
+  return randomNumber.slice(0, length);  // Return number with exact length
+}
+
+
+/**
+ * Generate a temporary OTP (One-Time Password) with the specified length.
+ * @param {number} length - The length of the OTP. Default is 6 digits.
+ * @returns {string} - The generated OTP.
+ * @throws {Error} - If the length is less than 1.
+ */
+function generateOTP(length = 6) {
+  if (length < 1) throw new Error('Length must be a positive integer.');
+
+  const otp = crypto.randomInt(10 ** (length - 1), 10 ** length);  // Generate OTP in range
+  return otp.toString();  // Return OTP as a string
+}
+
+
+/**
+ * Generate a random API key with the specified number of bytes.
+ * @param {number} length - The length of the API key in bytes. Default is 32 bytes.
+ * @returns {string} - The generated API key in hexadecimal format.
+ */
+function generateApiKey(length = 32) {
+  const apiKey = crypto.randomBytes(length).toString('hex');  // Generate random bytes and convert to hex
+  return apiKey;  // Return API key
+}
+
+module.exports = { generate, generateMultiple, generatePronounceablePassword, generateWithCustomPool, generateRandomNumber, generateOTP, generateApiKey };

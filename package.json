@@ -1,7 +1,7 @@
 {
   "name": "random-password-toolkit",
-  "version": "1.0.1",
-  "description": "A powerful and versatile tool for generating secure, customizable passwords with encryption, decryption, and password strength validation features.",
+  "version": "1.0.2",
+  "description": "A powerful and versatile tool for generating secure, customizable passwords with encryption, decryption, and password strength validation features, random number, api key generator, otp generator.",
   "main": "src/index.js",
   "types": "src/index.d.ts",
   "scripts": {
@@ -19,7 +19,13 @@
     "decryption",
     "password-strength",
     "custom-password",
-    "password-security"
+    "password-security",
+    "otp-generator",
+    "random number generator",
+    "api key generator",
+    "random-number",
+    "random password toolkit",
+    "random-password-toolkit"
   ],
   "author": {
     "name": "Krishna Tadi",
